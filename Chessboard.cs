@@ -193,12 +193,12 @@ public class Chessboard : MonoBehaviour
         int rb = Random.Range(0, 7);
         // ChessPiece cp = Random.Range(Rook, Knight, Bishop, King, Queen, Pawn); 
 
-        chessPieces[ra,rb] = SpawnSinglePiece(ChessPieceType.Rook, whiteTeam);
-        chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Knight, blackTeam);
-        chessPieces[rb,ra] = SpawnSinglePiece(ChessPieceType.Bishop, whiteTeam);
-        // chessPieces[rb,ra] = SpawnSinglePiece(ChessPieceType.King, whiteTeam);
-        // chessPieces[rb,ra] = SpawnSinglePiece(ChessPieceType.Queen, whiteTeam);
-        // chessPieces[rb,ra] = SpawnSinglePiece(ChessPieceType.Pawn, whiteTeam);
+        chessPieces[ra,rb] = SpawnSinglePiece(ChessPieceType.cp, whiteTeam);
+        // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Knight, blackTeam);
+        // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Bishop, whiteTeam);
+        // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.King, whiteTeam);
+        // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Queen, whiteTeam);
+        // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Pawn, whiteTeam);
 
 
         // White Team
