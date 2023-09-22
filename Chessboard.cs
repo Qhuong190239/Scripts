@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using Random=UnityEngine.Random;
-
+using Random=System.Random;
 public enum SpecialMove
 {
     None = 0,
@@ -181,7 +180,30 @@ public class Chessboard : MonoBehaviour
 
         return tileObject;
     }
-    
+    // Random method
+
+    // private static Random rnd = new Random();
+ 
+    // public static T PickRandom<T>(this IList<T> source)
+    // {
+    //     int randIndex = rnd.Next(source.Count);
+    //     return source[randIndex];
+    // }
+
+    // public static void Random()
+    // {
+    //     List<int> numbers = new List<int>() { 1, 2, 3, 4, 5 };
+ 
+    //     int random = numbers.PickRandom();
+    // }
+
+    static Random rnd = new Random();
+ 
+    public static IEnumerable<T> PickRandom<T>(this IList<T> source, int count)
+    {
+        return source.OrderBy(x => rnd.Next()).Take(count);
+    }
+
     // Spawning of the pieces
     private void SpawnAllPieces()
     {
@@ -189,12 +211,22 @@ public class Chessboard : MonoBehaviour
         int whiteTeam = 0;
         int blackTeam = 1;
 
-        int ra = Random.Range(0, 7);
-        int rb = Random.Range(0, 7);
+        // List<int> numbers = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+ 
+        // Random rnd = new Random();
+        // int randIndex = Random.Next(numbers.Count);
+        // int random = numbers[randIndex];
+
+        List<int> numbers = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+ 
+        var randomNums = numbers.PickRandom(2);
+
+        // List list = new List<int>[0, 1, 2, 3, 4, 5, 6, 7, 8];
+        // int ra = Random.List[0, 1, 2, 3, 4, 5, 6, 7, 8];
+        // int rb = Random.Range(0, 8);
         // ChessPiece cp = Random.Range(Rook, Knight, Bishop, King, Queen, Pawn); 
 
-        chessPieces[ra,rb] = SpawnSinglePiece(ChessPieceType.Rook, whiteTeam);
-        chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Knight, whiteTeam);
+        chessPieces[randomNums, randomNums] = SpawnSinglePiece(ChessPieceType.Rook, whiteTeam);        
         // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Bishop, whiteTeam);
         // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.King, whiteTeam);
         // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Queen, whiteTeam);
@@ -214,16 +246,16 @@ public class Chessboard : MonoBehaviour
         //    chessPieces[i, 1] = SpawnSinglePiece(ChessPieceType.Pawn, whiteTeam);
     
         // Black Team
-        chessPieces[0,7] = SpawnSinglePiece(ChessPieceType.Rook, blackTeam);
-        chessPieces[1,7] = SpawnSinglePiece(ChessPieceType.Knight, blackTeam);
-        chessPieces[2,7] = SpawnSinglePiece(ChessPieceType.Bishop, blackTeam);
-        chessPieces[4,7] = SpawnSinglePiece(ChessPieceType.King, blackTeam);
-        chessPieces[3,7] = SpawnSinglePiece(ChessPieceType.Queen, blackTeam);
-        chessPieces[5,7] = SpawnSinglePiece(ChessPieceType.Bishop, blackTeam);
-        chessPieces[6,7] = SpawnSinglePiece(ChessPieceType.Knight, blackTeam);
-        chessPieces[7,7] = SpawnSinglePiece(ChessPieceType.Rook, blackTeam);
-        for(int i = 0; i < TILE_COUNT_X; i++)
-           chessPieces[i, 6] = SpawnSinglePiece(ChessPieceType.Pawn, blackTeam);    
+        // chessPieces[0,7] = SpawnSinglePiece(ChessPieceType.Rook, blackTeam);
+        // chessPieces[1,7] = SpawnSinglePiece(ChessPieceType.Knight, blackTeam);
+        // chessPieces[2,7] = SpawnSinglePiece(ChessPieceType.Bishop, blackTeam);
+        // chessPieces[4,7] = SpawnSinglePiece(ChessPieceType.King, blackTeam);
+        // chessPieces[3,7] = SpawnSinglePiece(ChessPieceType.Queen, blackTeam);
+        // chessPieces[5,7] = SpawnSinglePiece(ChessPieceType.Bishop, blackTeam);
+        // chessPieces[6,7] = SpawnSinglePiece(ChessPieceType.Knight, blackTeam);
+        // chessPieces[7,7] = SpawnSinglePiece(ChessPieceType.Rook, blackTeam);
+        // for(int i = 0; i < TILE_COUNT_X; i++)
+        //    chessPieces[i, 6] = SpawnSinglePiece(ChessPieceType.Pawn, blackTeam);    
     }
     private ChessPiece SpawnSinglePiece(ChessPieceType type, int team)
     {
