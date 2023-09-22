@@ -211,21 +211,6 @@ public class Chessboard : MonoBehaviour
         int whiteTeam = 0;
         int blackTeam = 1;
 
-        // List<int> numbers = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
- 
-        // Random rnd = new Random();
-        // int randIndex = Random.Next(numbers.Count);
-        // int random = numbers[randIndex];
-
-        List<int> numbers = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
- 
-        var randomNums = numbers.PickRandom(2);
-
-        // List list = new List<int>[0, 1, 2, 3, 4, 5, 6, 7, 8];
-        // int ra = Random.List[0, 1, 2, 3, 4, 5, 6, 7, 8];
-        // int rb = Random.Range(0, 8);
-        // ChessPiece cp = Random.Range(Rook, Knight, Bishop, King, Queen, Pawn); 
-
         chessPieces[randomNums, randomNums] = SpawnSinglePiece(ChessPieceType.Rook, whiteTeam);        
         // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.Bishop, whiteTeam);
         // chessPieces[ra,ra] = SpawnSinglePiece(ChessPieceType.King, whiteTeam);
